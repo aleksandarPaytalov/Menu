@@ -2,15 +2,19 @@ import { useState } from "react";
 import Title from "./Title";
 import menu from "./data";
 import Menu from "./Menu";
+import Categories from "./Categories";
+
+const uniqueCategories = ["all", ...new Set(menu.map((item) => item.category))];
 
 const App = () => {
   const [menuItems, setMenuItems] = useState(menu);
-  //console.log(menuItems);
+  const [categories, setCategories] = useState(uniqueCategories);
 
   return (
     <main>
       <section className="menu">
         <Title text="Our menu" />
+        <Categories categories={categories} />
         <Menu items={menuItems} />
       </section>
     </main>
